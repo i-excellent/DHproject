@@ -1,0 +1,160 @@
+<?php
+
+/**
+ * Created by PhpStorm.
+ * User: losso
+ * Date: 05.03.2016
+ * Time: 14:36
+ */
+class CabinetController
+{
+
+    /**
+     * Action для страницы "Кабинет пользователя"
+     */
+    public function actionIndex()
+    {
+        // Получаем идентификатор пользователя из сессии
+        $userId = User::checkLogged();
+
+        // Получаем информацию о пользователе из БД
+        $user = User::getUserById($userId);
+
+        // Подключаем вид
+        require_once(ROOT . '/app/views/cabinet/index.php');
+        return true;
+    }
+
+    /**
+     * Action для страницы "Редактирование данных пользователя"
+     */
+    public function actionEdit()
+    {
+        // Получаем идентификатор пользователя из сессии
+        $userId = User::checkLogged();
+
+        // Получаем информацию о пользователе из БД
+        $user = User::getUserById($userId);
+
+        // Заполняем переменные для полей формы
+        $name = $user['name'];
+        $password = $user['password'];
+
+        // Флаг результата
+        $result = false;
+
+        // Обработка формы
+        if (isset($_POST['submit'])) {
+            // Если форма отправлена
+            // Получаем данные из формы редактирования
+            $name = $_POST['name'];
+            $password = $_POST['password'];
+
+            // Флаг ошибок
+            $errors = false;
+
+            // Валидируем значения
+            if (!User::checkName($name)) {
+                $errors[] = 'Имя не должно быть короче 2-х символов';
+            }
+            if (!User::checkPassword($password)) {
+                $errors[] = 'Пароль не должен быть короче 6-ти символов';
+            }
+
+            if ($errors == false) {
+                // Если ошибок нет, сохраняет изменения профиля
+                $result = User::edit($userId, $name, $password);
+            }
+        }
+
+        // Подключаем вид
+        require_once(ROOT . '/app/views/cabinet/edit.php');
+        return true;
+    }
+public function actionSell()
+{
+
+    // Подключаем вид
+
+    // Получаем идентификатор пользователя из сессии
+    $userId = User::checkLogged();
+
+    // Получаем информацию о пользователе из БД
+    $user = User::getUserById($userId);
+    require_once(ROOT . '/app/views/cabinet/sell.php');
+    return true;
+}
+    public function actionBuy()
+    {
+        // Получаем идентификатор пользователя из сессии
+        $userId = User::checkLogged();
+
+        // Получаем информацию о пользователе из БД
+        $user = User::getUserById($userId);
+        require_once(ROOT . '/app/views/cabinet/buy.php');
+        return true;
+    }
+
+public function actionRecall()
+{
+    // Получаем идентификатор пользователя из сессии
+    $userId = User::checkLogged();
+
+    // Получаем информацию о пользователе из БД
+    $user = User::getUserById($userId);
+    require_once(ROOT . '/app/views/cabinet/recall.php');
+    return true;
+}
+
+public function actionBill()
+{
+    // Получаем идентификатор пользователя из сессии
+    $userId = User::checkLogged();
+
+    // Получаем информацию о пользователе из БД
+    $user = User::getUserById($userId);
+    require_once(ROOT . '/app/views/cabinet/bill.php');
+    return true;
+}
+    public function actionUpload()
+    {
+        // Получаем идентификатор пользователя из сессии
+        $userId = User::checkLogged();
+        // Получаем информацию о пользователе из БД
+        $user = User::getUserById($userId);
+
+        if(isset($_FILES['uploadfile']['name'])){
+            $name_file = $_FILES['uploadfile']['name'];
+            $mime_type = $_FILES['uploadfile']['type'];
+            $size_file = $_FILES['uploadfile']['size'];
+            $temporal_name = $_FILES['uploadfile']['tmp_name'];
+            $theme_file = $_POST['theme'];
+            $type_work = $_POST['type'];
+            $subject_work = $_POST['subject'];
+            $count_page = $_POST['page'];
+            $date_work = $_POST['date'];
+            $lang_work = $_POST['language'];
+            $desc_work = $_POST['description'];
+            $price_work = $_POST['price'];
+
+
+            $patch_user = ROOT. "/upload/$userId/";
+            if (!file_exists($patch_user)) {
+                mkdir($patch_user, 0700, true);// проверяем если у пользователя папка если нет создем
+            }
+            $uploadfile = $patch_user . basename($name_file);// Каталог, в который мы будем принимать файл:
+            if (copy($temporal_name , $uploadfile))// Копируем файл из каталога для временного хранения файлов:
+            {
+                echo "<h3>Файл успешно загружен на сервер</h3>";
+                $result = Cabinet::workUpload($name_file,  $size_file, $theme_file,
+                    $type_work, $subject_work, $count_page,
+                    $date_work, $lang_work, $desc_work, $price_work,$userId);
+            }
+            else { echo "<h3>Ошибка! Не удалось загрузить файл на сервер!</h3>"; exit; }}
+        require_once(ROOT . '/app/views/cabinet/upload.php');
+        return true;
+
+    }
+
+
+}
