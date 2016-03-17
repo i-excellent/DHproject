@@ -136,7 +136,7 @@ public function actionBill()
             $lang_work = $_POST['language'];
             $desc_work = $_POST['description'];
             $price_work = $_POST['price'];
-
+            $name_file = $this->translitName($name_file);
 
             $patch_user = ROOT. "/upload/$userId/";
             if (!file_exists($patch_user)) {
@@ -155,6 +155,22 @@ public function actionBill()
         return true;
 
     }
-
+    private  function translitName($t_name_file,$coder='utf-8')
+    {
+        $t_name_file = mb_strtolower($t_name_file, $coder);
+        $t_name_file = str_replace(array(
+            'а','б','в','г','д','е','ё','з','и','й','к',
+            'л','м','н','о','п','р','с','т','у','ф','х',
+            'ъ','ы','э',' ','ж','ц','ч','ш','щ','ь','ю','я'
+        ), array(
+            'a','b','v','g','d','e','e','z','i','y','k',
+            'l','m','n','o','p','r','s','t','u','f','h',
+            'j','i','e','_','zh','ts','ch','sh','shch',
+            '','yu','ya'
+        ), $t_name_file);
+        $t_name_file = trim($t_name_file, '_');
+        $name_file = preg_replace("/_{2,}/", "_", $t_name_file);
+        return $name_file;
+    }
 
 }

@@ -19,7 +19,7 @@ include ROOT.'/app/views/layouts/cabinet_menu.php';
 
 
         <div>
-            <form action="/upload/main" method="post" enctype="multipart/form-data">
+            <form action="/cabinet/upload" method="post" enctype="multipart/form-data">
                 Тема/названия работы<br>
                 <input type="text" autofocus placeholder="Тема" required="required" name="theme"/><br>
                 <input type="file" name="uploadfile" required="required"><br>

@@ -1,6 +1,7 @@
 <?php
 
-            $DBH = new PDO('mysql:host=localhost;dbname=shop_db', 'root', '411826403',array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES \'utf8\''));
+$DBH = new PDO('mysql:host=sql8.freemysqlhosting.net;dbname=sql8111036', 'sql8111036', '1GAk7bbrgd',array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES \'utf8\''));
+
 
 $result=$DBH->query("SELECT subject_name FROM subject WHERE type_id=".$_GET['type']."");
 if($result->rowCount() > 0)
