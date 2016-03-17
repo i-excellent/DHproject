@@ -2,7 +2,7 @@
 //Front controller11156не21цйц
 
 
-//1. Options нкенк
+//1. Options н
 
 ini_set('display_errors',1);
 error_reporting(E_ALL);

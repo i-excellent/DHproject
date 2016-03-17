@@ -12,7 +12,7 @@ include ROOT.'/app/views/layouts/left_menu.php';
     <div id="block_content">
         <?php
         foreach ($categories as $row_cat){
-            echo" <p><a href='/categories/$row_cat[type_id]'>$row_cat[type]</a></p>";
+            echo" <p><a class='category' href='/categories/$row_cat[type_id]'>$row_cat[type]</a></p>";
               $subject = array();
         $subject = Subject::getSubject($row_cat['type_id']);
         foreach ($subject as $row_sub){
