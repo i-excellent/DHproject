@@ -1,8 +1,8 @@
 <?php
-//Front controller11156не21
+//Front controller11156не21цйц
 
 
-//1. Options
+//1. Options нкенк
 
 ini_set('display_errors',1);
 error_reporting(E_ALL);
