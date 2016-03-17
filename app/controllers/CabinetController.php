@@ -149,9 +149,12 @@ public function actionBill()
                 $result = Cabinet::workUpload($name_file,  $size_file, $theme_file,
                     $type_work, $subject_work, $count_page,
                     $date_work, $lang_work, $desc_work, $price_work,$userId);
+                header("Location: /cabinet/sell");
             }
-            else { echo "<h3>Ошибка! Не удалось загрузить файл на сервер!</h3>"; exit; }}
+            else { echo "<h3>Ошибка! Не удалось загрузить файл на сервер!</h3>"; exit;
+               }}
         require_once(ROOT . '/app/views/cabinet/upload.php');
+
         return true;
 
     }
@@ -171,6 +174,17 @@ public function actionBill()
         $t_name_file = trim($t_name_file, '_');
         $name_file = preg_replace("/_{2,}/", "_", $t_name_file);
         return $name_file;
+    }
+    public function actionDelete($id)
+    {
+        echo $id;
+        // Получаем идентификатор пользователя из сессии
+        $userId = User::checkLogged();
+        // Получаем информацию о пользователе из БД
+        $user = User::getUserById($userId);
+        $delete=Cabinet::getWorkDelete($id);
+        header("Location: /cabinet/sell");
+        return true;
     }
 
 }

@@ -29,10 +29,10 @@ include ROOT.'/app/views/layouts/header.php';
                 </tr>
                 <?php
                 $work_list = array();
-                $work_list = Cabinet::getWorkViews();
+                $work_list = Cabinet::getWorkViews($userId);
                 foreach ($work_list as $row)
 
-                      echo"  <tr><td>$row[theme_file]</td><td>$row[count_sell]</td><td>$row[price_work]</td><td><a href='/work/delete'>Удалить</a>/<a href='/work/edit'>Редактировать</a></td></tr>";
+                      echo"  <tr><td>$row[theme_file]</td><td>$row[count_sell]</td><td>$row[price_work]</td><td><a href='/cabinet/delete/$row[id_work]'>Удалить</a>/<a href='/work/edit'>Редактировать</a></td></tr>";
                 ?>
 
 

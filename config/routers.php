@@ -21,5 +21,5 @@ return array(
     'cabinet/bill' => 'cabinet/bill',
      'cabinet/recall' => 'cabinet/recall',
     'cabinet/upload' => 'cabinet/upload',
-
+    'cabinet/delete/([0-9]+)' => 'cabinet/delete/$1',
 );

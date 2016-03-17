@@ -4,7 +4,7 @@ $(document).ready (function(){
             data = JSON.parse(data);
             $("select[name='subject']").empty();
             for(var id in data){
-                $("select[name='subject']").append($("<option value='" + id + "'>"+ data[id] + "</option>"));
+                $("select[name='subject']").append($("<option value='"+ data[id] +"'>"+ data[id] + "</option>"));
             }
         });
     });

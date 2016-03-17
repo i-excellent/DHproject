@@ -36,13 +36,21 @@ class Cabinet {
         $result->bindParam(':userId', $userId, PDO::PARAM_STR);
         return $result->execute();
     }
-    public static function getWorkViews(){
+    public static function getWorkViews($userId){
         $DBH = dbConnect::getConnection();
-        $result=$DBH->query("SELECT theme_file,count_sell,price_work FROM work_user");
+
+        $result=$DBH->query("SELECT id_work,theme_file,count_sell,price_work FROM work_user WHERE user_id=$userId");
         if($result->rowCount() > 0);{
             $row1 = $result->fetchAll(PDO::FETCH_ASSOC);
             return $row1;
         }
     }
+    public static function getWorkDelete($id){
+        $DBH = dbConnect::getConnection();
+        // Получение и возврат результатов. Используется подготовленный запрос
+        $result =  $DBH->prepare("DELETE FROM work_user WHERE id_work=:id");
+        $result->bindParam(':id', $id, PDO::PARAM_INT);
+        return $result->execute();
+        }
 
 }
