@@ -7,6 +7,7 @@
  */
 return array(
      'set/catalog'=> 'set/catalog',
+    'categories/([0-9]+)' => 'set/catalog/$1', // actionCategory в CatalogController
     // user:
     'user/register' => 'user/register',
     'user/login' => 'user/login',
@@ -20,4 +21,5 @@ return array(
     'cabinet/bill' => 'cabinet/bill',
      'cabinet/recall' => 'cabinet/recall',
     'cabinet/upload' => 'cabinet/upload',
+
 );

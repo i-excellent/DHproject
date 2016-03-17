@@ -16,11 +16,18 @@ class SetController
         return true;
 
     }
-    public function actionCatalog()
+    public function actionCatalog($idCategory=null)
     {
-
+if (!isset($idCategory)){
         require_once(ROOT . '/app/views/Catalog.php');
-        return true;
+        return true;}
+        else
+        {
+        require_once(ROOT . '/app/views/idcatalog.php');
+
+        }
 
     }
+
+
 }
