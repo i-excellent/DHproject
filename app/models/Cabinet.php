@@ -56,7 +56,9 @@ class Cabinet {
     public static function getWorkDelete($id){
         $row = Cabinet::getCheckNameFile($id);
         var_dump($row);
-        unlink(ROOT. "/upload/$row[user_id]/$row[name_file]");
+        $patch= ROOT. '/upload/'.$row[0]['user_id'].'/'.$row[0]['name_file'];
+        var_dump($patch);
+        unlink($patch);
         if(isset($row)){
         $DBH = dbConnect::getConnection();
         // Получение и возврат результатов. Используется подготовленный запрос
