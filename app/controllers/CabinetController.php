@@ -208,5 +208,30 @@ public function actionBill()
         }
         return true;
     }
+    public function actionEdit()
+    {
+        // Получаем идентификатор пользователя из сессии
+        $userId = User::checkLogged();
+        // Получаем информацию о пользователе из БД
+        $user = User::getUserById($userId);
+        if(isset($_POST['theme'])){
+            $theme_file = $_POST['theme'];
+            $type_work = $_POST['type'];
+            $subject_work = $_POST['subject'];
+            $count_page = $_POST['page'];
+            $date_work = $_POST['date'];
+            $lang_work = $_POST['language'];
+            $desc_work = $_POST['description'];
+            $price_work = $_POST['price'];
+                $result = Cabinet::workEdit($theme_file,
+                    $type_work, $subject_work, $count_page,
+                    $date_work, $lang_work, $desc_work, $price_work,$userId);
+                header("Location: /cabinet/sell");
+            }
+            else { echo "<h3>Ошибка!</h3>"; exit;
+               }}
+        require_once(ROOT . '/app/views/cabinet/edit.php');
+        return true;
+    }
 
 }
