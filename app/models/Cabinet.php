@@ -66,5 +66,29 @@ class  Cabinet extends CabinetController{
             return true;
 
         }
-
+public static function workEsit($theme_file,
+                                      $type_work, $subject_work, $count_page,
+                                      $date_work, $lang_work, $desc_work, $price_work,$workId)
+    {
+          // Соединение с БД
+        $DBH = dbConnect::getConnection();
+        // Текст запроса к БД
+        
+            $sql = "UPDATE work_user
+            SET theme_file = :theme_file, type_work = :type_work, subject_work = :subject_work, count_page = :count_page, 
+            date_work = :date_work, lang_work = :lang_work, desc_work = :desc_work, price_work = :price_work
+            WHERE workId = :workId ";
+        // Получение и возврат результатов. Используется подготовленный запрос
+        $result = $DBH->prepare($sql);
+        $result->bindParam(':theme_file', $theme_file, PDO::PARAM_INT);
+        $result->bindParam(':type_work', $type_work, PDO::PARAM_STR);
+        $result->bindParam(':subject_work', $subject_work, PDO::PARAM_STR);
+        $result->bindParam(':count_page', $count_page, PDO::PARAM_STR);
+        $result->bindParam(':date_work', $date_work, PDO::PARAM_STR);
+        $result->bindParam(':lang_work', $lang_work, PDO::PARAM_STR);
+        $result->bindParam(':desc_work', $desc_work, PDO::PARAM_STR);
+        $result->bindParam(':price_work', $price_work, PDO::PARAM_STR);
+        return $result->execute();
+       
+    }
 }
