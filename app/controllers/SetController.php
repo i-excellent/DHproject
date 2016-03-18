@@ -28,6 +28,9 @@ if (!isset($idCategory)){
         }
 
     }
-
+    public function actionError()
+    {
+        require_once(ROOT . '/app/views/layouts/error.php');
+    }
 
 }

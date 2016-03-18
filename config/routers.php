@@ -22,4 +22,5 @@ return array(
      'cabinet/recall' => 'cabinet/recall',
     'cabinet/upload' => 'cabinet/upload',
     'cabinet/delete/([0-9]+)' => 'cabinet/delete/$1',
+    'error' => 'set/error'
 );

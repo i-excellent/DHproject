@@ -6,7 +6,7 @@
  * Date: 05.03.2016
  * Time: 14:36
  */
-class CabinetController
+class  CabinetController
 {
 
     /**
@@ -177,13 +177,21 @@ public function actionBill()
     }
     public function actionDelete($id)
     {
-        echo $id;
         // Получаем идентификатор пользователя из сессии
         $userId = User::checkLogged();
         // Получаем информацию о пользователе из БД
         $user = User::getUserById($userId);
+        $row = Cabinet::getCheckNameFile($id);//кто владелец работы узнаем
+        var_dump($row);
+        var_dump($user);
+        if($user['id']===$row[0]['user_id'])//если владелиц и авторизованый пользаватель совпадают - удаляем
+       {
         $delete=Cabinet::getWorkDelete($id);
-        header("Location: /cabinet/sell");
+        header("Location: /cabinet/sell");}
+        else
+        {
+            header("Location: /error");
+        }
         return true;
     }
 

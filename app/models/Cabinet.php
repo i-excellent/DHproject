@@ -5,7 +5,7 @@
  * Date: 16.03.2016
  * Time: 2:38
  */
-class Cabinet {
+class  Cabinet extends CabinetController{
     public static function workUpload($name_file,  $size_file, $theme_file,
                                       $type_work, $subject_work, $count_page,
                                       $date_work, $lang_work, $desc_work, $price_work,$userId)
@@ -45,7 +45,7 @@ class Cabinet {
             return $row1;
         }
     }
-    private static function getCheckNameFile($workId){
+    protected static function getCheckNameFile($workId){
         $DBH = dbConnect::getConnection();
         $result=$DBH->query("SELECT name_file,user_id FROM work_user WHERE id_work=$workId");
         if($result->rowCount() > 0);{
@@ -55,9 +55,7 @@ class Cabinet {
         }
     public static function getWorkDelete($id){
         $row = Cabinet::getCheckNameFile($id);
-        var_dump($row);
-        $patch= ROOT. '/upload/'.$row[0]['user_id'].'/'.$row[0]['name_file'];
-        var_dump($patch);
+        $patch= ROOT. '/upload/'.$row[0]['user_id'].'/'.$row[0]['name_file'];;
         unlink($patch);
         if(isset($row)){
         $DBH = dbConnect::getConnection();
