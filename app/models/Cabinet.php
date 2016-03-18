@@ -45,12 +45,26 @@ class Cabinet {
             return $row1;
         }
     }
+    private static function getCheckNameFile($workId){
+        $DBH = dbConnect::getConnection();
+        $result=$DBH->query("SELECT name_file,user_id FROM work_user WHERE id_work=$workId");
+        if($result->rowCount() > 0);{
+            $row1 = $result->fetchAll(PDO::FETCH_ASSOC);
+            return $row1;
+        }
+        }
     public static function getWorkDelete($id){
+        $row = Cabinet::getCheckNameFile($id);
+        var_dump($row);
+        unlink(ROOT. "/upload/$row[user_id]/$row[name_file]");
+        if(isset($row)){
         $DBH = dbConnect::getConnection();
         // Получение и возврат результатов. Используется подготовленный запрос
         $result =  $DBH->prepare("DELETE FROM work_user WHERE id_work=:id");
         $result->bindParam(':id', $id, PDO::PARAM_INT);
-        return $result->execute();
+        return $result->execute();}
+            return true;
+
         }
 
 }
