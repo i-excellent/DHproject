@@ -34,7 +34,7 @@ include ROOT.'/app/views/layouts/cabinet_menu.php';
                 </select><br>
                 <label>Предмет</label><br>
                 <select name="subject">
-                    <option value="subject1">Вибирите направление</option>
+                    <option value="Другие дисциплины">Вибирите направление</option>
                 </select><br>
                 <label for="type">Тип работы</label><br>
                 <select name="attribute">

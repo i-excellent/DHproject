@@ -1,7 +1,6 @@
 <?php
 class Subject
 {
-
     public static function getCategorySubject(){
         $DBH = dbConnect::getConnection();
         $result=$DBH->query("SELECT DISTINCT type, type_id FROM subject");

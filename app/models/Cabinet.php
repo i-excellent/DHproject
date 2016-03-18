@@ -36,6 +36,8 @@ class  Cabinet extends CabinetController
         $result->bindParam(':desc_work', $desc_work, PDO::PARAM_STR);
         $result->bindParam(':price_work', $price_work, PDO::PARAM_STR);
         $result->bindParam(':userId', $userId, PDO::PARAM_STR);
+       // $result1 = $DBH->prepare("UPDATE subject SET count_work = count_work + 1 WHERE subject_name=$subject_work");
+
         return $result->execute();
     }
 
