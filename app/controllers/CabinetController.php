@@ -182,12 +182,26 @@ public function actionBill()
         // Получаем информацию о пользователе из БД
         $user = User::getUserById($userId);
         $row = Cabinet::getCheckNameFile($id);//кто владелец работы узнаем
-        var_dump($row);
-        var_dump($user);
         if($user['id']===$row[0]['user_id'])//если владелиц и авторизованый пользаватель совпадают - удаляем
        {
         $delete=Cabinet::getWorkDelete($id);
         header("Location: /cabinet/sell");}
+        else
+        {
+            header("Location: /error");
+        }
+        return true;
+    }
+    public function actionEdit($id)
+    {
+        // Получаем идентификатор пользователя из сессии
+        $userId = User::checkLogged();
+        // Получаем информацию о пользователе из БД
+        $user = User::getUserById($userId);
+        $row = Cabinet::getCheckNameFile($id);//кто владелец работы узнаем
+        if($user['id']===$row[0]['user_id'])//если владелиц и авторизованый пользаватель совпадают - удаляем
+       {
+        require_once(ROOT . '/app/views/cabinet/editwork.php');}
         else
         {
             header("Location: /error");
