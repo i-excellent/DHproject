@@ -8,7 +8,7 @@ include ROOT.'/app/views/layouts/header.php';
         ?>
 
         <div id="cabinet_content"><?php if ($result): ?>
-                <p>Данные отредактированы!</p>
+                <p>Данные отредактированы.</p>
             <?php else: ?>
                 <?php if (isset($errors) && is_array($errors)): ?>
                     <ul>
