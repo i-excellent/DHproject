@@ -66,7 +66,7 @@ class  Cabinet extends CabinetController{
             return true;
 
         }
-public static function workEsit($theme_file,
+public static function workEdit($theme_file,
                                       $type_work, $subject_work, $count_page,
                                       $date_work, $lang_work, $desc_work, $price_work,$workId)
     {
