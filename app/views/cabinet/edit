@@ -15,12 +15,15 @@ include ROOT.'/app/views/layouts/cabinet_menu.php';
     <link href="/app/views/CSS/cal.css" rel="stylesheet" type="text/css" />
     <div id="cabinet_content">
 
-
+<?php 
+$name=Cabinet::getWorkViews($userId);
+echo $name['theme_file'];
+?>
         <div>
+        <p>Редактировать</p>
             <form action="/cabinet/upload" method="post" enctype="multipart/form-data">
                 Тема/названия работы<br>
                 <input type="text" autofocus placeholder="Тема" required="required" name="theme"/><br>
-                <input type="file" name="uploadfile" required="required"><br>
                 <label>Направление</label><br>
                 <select  name="type">
                     <?php
@@ -54,7 +57,7 @@ include ROOT.'/app/views/layouts/cabinet_menu.php';
                               ="1024" cols="25" rows="10" name="description">Описание работы</textarea><br>
                 Цена работи(руб.)(10% комисия)<br>
                 <input type="number" min="0" max="100000" name="price" step="1"/><br>
-                <input type="reset" value="сброс"/><input type="submit" value="Загрузить"/>
+                <input type="reset" value="сброс"/><input type="submit" value="Редактировать"/>
 
             </form>
 
