@@ -32,7 +32,7 @@ include ROOT.'/app/views/layouts/header.php';
                 $work_list = Cabinet::getWorkViews($userId);
                 foreach ($work_list as $row)
 
-                      echo"  <tr><td>$row[theme_file]</td><td>$row[count_sell]</td><td>$row[price_work]</td><td><a href='/cabinet/delete/$row[id_work]'>Удалить</a>/<a href='/work/edit'>Редактировать</a></td></tr>";
+                      echo"  <tr><td>$row[theme_file]</td><td>$row[count_sell]</td><td>$row[price_work]</td><td><a href='/cabinet/delete/$row[id_work]'>Удалить</a>/<a href='/cabinet/editwork/$row[id_work]'>Редактировать</a></td></tr>";
                 ?>
 
 
