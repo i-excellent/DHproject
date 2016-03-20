@@ -6,7 +6,7 @@
  * Date: 16.03.2016
  * Time: 2:38
  */
-class  Cabinet extends CabinetController
+class  Cabinet
 {
     public static function workUpload($name_file, $size_file, $theme_file,
                                       $type_work, $subject_work, $count_page,

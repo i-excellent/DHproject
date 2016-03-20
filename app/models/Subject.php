@@ -9,10 +9,10 @@ class Subject
             return $row1;
             }
     }
-    public static function getSubject($category)
+    public static function getSubject()
     {
         $DBH = dbConnect::getConnection();
-        $result = $DBH->query("SELECT subject_name,id_subject,count_work FROM subject WHERE type_id=$category");
+        $result = $DBH->query("SELECT subject_name,id_subject,type,count_work,type_id FROM subject");
         if($result->rowCount() > 0);{
         $row2 = $result->fetchAll(PDO::FETCH_ASSOC);
         return $row2;
@@ -26,5 +26,20 @@ class Subject
         $row2 = $result->fetchAll(PDO::FETCH_ASSOC);
         return $row2;
     }
+    }
+    public function __construct($select = false) {
+        // объект бд коннекта
+        global $dbObject;
+        $this->db = $dbObject;
+
+        // имя таблицы
+        $modelName = get_class($this);
+        $arrExp = explode('_', $modelName);
+        $tableName = strtolower($arrExp[1]);
+        $this->table = $tableName;
+
+        // обработка запроса, если нужно
+        $sql = $this->_getSelect($select);
+        if($sql) $this->_getResult("SELECT * FROM $this->table" . $sql);
     }
 }

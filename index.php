@@ -2,7 +2,7 @@
 //Front controller
 
 
-//1. Options н
+//1. Option
 
 ini_set('display_errors',1);
 error_reporting(E_ALL);
@@ -21,3 +21,6 @@ require_once(ROOT . '/core/Autoload.php');
 //4. Call router
 $start_router=new Router;
 $start_router->run();
+
+
+

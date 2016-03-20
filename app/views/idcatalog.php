@@ -19,8 +19,9 @@ include ROOT.'/app/views/layouts/left_menu.php';
             <ul>
             <li>$row_work[theme_file]</li>
             <li>$row_work[name]</li>
-            </ul>
-            "
+            <li>$row_work[price_work]</li>
+            <li>$row_work[desc_work]</li>
+            </ul>"
         ?>
     </div>
 <?php
