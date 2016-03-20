@@ -1,4 +1,4 @@
-
+Ошибка
 <?php
-Subject::countWork();
+//SlowQuery::countWork();
 ?>

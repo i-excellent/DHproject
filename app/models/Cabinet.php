@@ -36,8 +36,7 @@ class  Cabinet
         $result->bindParam(':desc_work', $desc_work, PDO::PARAM_STR);
         $result->bindParam(':price_work', $price_work, PDO::PARAM_STR);
         $result->bindParam(':userId', $userId, PDO::PARAM_STR);
-       // $result1 = $DBH->prepare("UPDATE subject SET count_work = count_work + 1 WHERE subject_name=$subject_work");
-
+        $count_work=Cabinet::CountWork('+1',$subject_work);//обновляем количество робот
         return $result->execute();
     }
 
@@ -56,7 +55,7 @@ class  Cabinet
     public static function getCheckNameFile($workId)
     {
         $DBH = dbConnect::getConnection();
-        $result = $DBH->query("SELECT name_file,user_id FROM work_user WHERE id_work=$workId");
+        $result = $DBH->query("SELECT name_file,user_id,subject_work FROM work_user WHERE id_work=$workId");
         if ($result->rowCount() > 0) ;
         {
             $row1 = $result->fetchAll(PDO::FETCH_ASSOC);
@@ -74,6 +73,7 @@ class  Cabinet
             // Получение и возврат результатов. Используется подготовленный запрос
             $result = $DBH->prepare("DELETE FROM work_user WHERE id_work=:id");
             $result->bindParam(':id', $id, PDO::PARAM_INT);
+            $count_work=Cabinet::CountWork('-1',$row[0]['subject_work']);//обновляем количество робот
             return $result->execute();
         }
         return true;
@@ -108,5 +108,14 @@ class  Cabinet
             $row1 = $result->fetchAll(PDO::FETCH_ASSOC);
             return $row1;
         }
+    }
+    public static function CountWork($num,$subject_work)
+    {
+        $DBH = dbConnect::getConnection();
+        $Count='count_work '.$num.'';
+        $workCount = $DBH->prepare("UPDATE subject
+            SET count_work = $Count WHERE subject_name = '$subject_work'");
+        $workCount->bindParam(':count_work', $Count, PDO::PARAM_INT);
+        return $workCount->execute();
     }
 }
