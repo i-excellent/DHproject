@@ -53,7 +53,7 @@ class  Cabinet
         }
     }
 
-    protected static function getCheckNameFile($workId)
+    public static function getCheckNameFile($workId)
     {
         $DBH = dbConnect::getConnection();
         $result = $DBH->query("SELECT name_file,user_id FROM work_user WHERE id_work=$workId");
