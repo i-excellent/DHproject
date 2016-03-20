@@ -153,7 +153,7 @@ public function actionBill()
             }
             else { echo "<h3>Ошибка! Не удалось загрузить файл на сервер!</h3>"; exit;
                }}
-        require_once(ROOT . '/app/views/cabinet/upload.php');
+            require_once(ROOT . '/app/views/cabinet/upload.php');
 
         return true;
 
