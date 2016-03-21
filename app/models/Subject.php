@@ -53,5 +53,13 @@ class Subject
               }
         return true;
     }
+    public static function SubjectForId($subjectId)
+    {
+         $DBH = dbConnect::getConnection();
+        $result = $DBH->query("SELECT theme_file,price_work,desc_work,subject_work,name FROM (work_user,user) WHERE type_work=$category AND user_id=id");
+        if($result->rowCount() > 0);{
+        $row2 = $result->fetchAll(PDO::FETCH_ASSOC);
+        return $row2;
+    }
 
 }
