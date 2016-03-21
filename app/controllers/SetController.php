@@ -32,5 +32,8 @@ if (!isset($idCategory)){
     {
         require_once(ROOT . '/app/views/layouts/error.php');
     }
-
+    public function actionSuject($idSubject)
+    {
+       require_once(ROOT . '/app/views/Subject.php'); 
+    }
 }
