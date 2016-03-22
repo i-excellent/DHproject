@@ -9,12 +9,21 @@ class Subject
             return $row1;
             }
     }
-    public static function getSubject()
+    public static function getSubject($idSubject=null)
     {
         $DBH = dbConnect::getConnection();
         $result = $DBH->query("SELECT subject_name,id_subject,type,count_work,type_id FROM subject");
         if($result->rowCount() > 0);{
         $row2 = $result->fetchAll(PDO::FETCH_ASSOC);
+        if(isset($idSubject))
+        {
+            $result = $DBH->query("SELECT id_subject ");
+            if($result->rowCount() > 0);{
+            $row = $result->fetchAll(PDO::FETCH_ASSOC);
+        }
+            return $row;
+        }
+
         return $row2;
     }
     }
@@ -27,5 +36,15 @@ class Subject
         return $row2;
     }
     }
+    public static function getSubjectForAjax($category)
+    {
+        $DBH = dbConnect::getConnection();
+        $result=$DBH->query("SELECT subject_name,id_subject FROM subject WHERE type_id=$category");
+        if($result->rowCount() > 0)
+        {
+            $row = $result->fetchAll(PDO::FETCH_ASSOC);
+        return $row;}
+    }
+
 
 }

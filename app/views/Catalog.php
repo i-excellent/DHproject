@@ -20,7 +20,7 @@ include ROOT.'/app/views/layouts/left_menu.php';
                         if (!$categories['count_work'])//если нет работ в этой категие то выводим текст,есть - ссылку
                         {echo" $categories[subject_name]";}
                         else {
-                            echo" <a href='$categories[id_subject]'>$categories[subject_name][$categories[count_work]]</a>";}}
+                            echo" <a href='/subject/$categories[id_subject]'>$categories[subject_name][$categories[count_work]]</a>";}}
 
                     }
 

@@ -114,7 +114,7 @@ class  Cabinet
         $DBH = dbConnect::getConnection();
         $Count='count_work '.$num.'';
         $workCount = $DBH->prepare("UPDATE subject
-            SET count_work = $Count WHERE subject_name = '$subject_work'");
+            SET count_work = $Count WHERE id_subject = '$subject_work'");
         $workCount->bindParam(':count_work', $Count, PDO::PARAM_INT);
         return $workCount->execute();
     }

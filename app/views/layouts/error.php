@@ -1,4 +1,4 @@
 Ошибка
 <?php
-//SlowQuery::countWork();
+SlowQuery::countWork();
 ?>

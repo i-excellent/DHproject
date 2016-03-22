@@ -8,6 +8,9 @@
 return array(
      'set/catalog'=> 'set/catalog',
     'categories/([0-9]+)' => 'set/catalog/$1', // actionCategory в CatalogController
+    'subject/([0-9]+)' => 'set/subject/$1', // views subject
+    'set/ajax'=> 'set/ajax',
+
     // user:
     'user/register' => 'user/register',
     'user/login' => 'user/login',

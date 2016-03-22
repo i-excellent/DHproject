@@ -32,5 +32,17 @@ if (!isset($idCategory)){
     {
         require_once(ROOT . '/app/views/layouts/error.php');
     }
-
+    public function actionSubject($idSubject)
+    {
+       require_once(ROOT . '/app/views/Subject.php');
+        return true;
+    }
+    public function actionAjax()
+    {
+        if(isset($_POST)){
+        $category=$_POST['type'];
+        $row = Subject::getSubjectForAjax($category);
+            echo  json_encode($row);
+       }
+    }
 }
