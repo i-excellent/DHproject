@@ -11,7 +11,6 @@ include ROOT.'/app/views/layouts/left_menu.php';
 ?>
     <div id="block_content">
         <?php
-        $subject = Subject::getSubject();//выбирем все категории и предметы
         foreach ($categories as $row_cat) {
             echo" <p><a class='category' href='/categories/$row_cat[type_id]'>$row_cat[type]</a></p>";
                 foreach ($subject as $categories) {

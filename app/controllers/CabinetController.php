@@ -122,7 +122,6 @@ public function actionBill()
         $userId = User::checkLogged();
         // Получаем информацию о пользователе из БД
         $user = User::getUserById($userId);
-
         if(isset($_FILES['uploadfile']['name'])){
             $name_file = $_FILES['uploadfile']['name'];
             $mime_type = $_FILES['uploadfile']['type'];
@@ -137,7 +136,6 @@ public function actionBill()
             $desc_work = $_POST['description'];
             $price_work = $_POST['price'];
             $name_file = $this->translitName($name_file);
-
             $patch_user = ROOT. "/upload/$userId/";
             if (!file_exists($patch_user)) {
                 mkdir($patch_user, 0700, true);// проверяем если у пользователя папка если нет создем
@@ -148,15 +146,13 @@ public function actionBill()
                 echo "<h3>Файл успешно загружен на сервер</h3>";
                 $result = Cabinet::workUpload($name_file,  $size_file, $theme_file,
                     $type_work, $subject_work, $count_page,
-                    $date_work, $lang_work, $desc_work, $price_work,$userId);
+                    $date_work, $lang_work, $desc_work, $price_work, $userId);
                 header("Location: /cabinet/sell");
             }
             else { echo "<h3>Ошибка! Не удалось загрузить файл на сервер!</h3>"; exit;
-               }}
-            require_once(ROOT . '/app/views/cabinet/upload.php');
-
+            }}
+        require_once(ROOT . '/app/views/cabinet/upload.php');
         return true;
-
     }
     private  function translitName($t_name_file,$coder='utf-8')
     {

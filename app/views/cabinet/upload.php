@@ -34,9 +34,9 @@ include ROOT.'/app/views/layouts/cabinet_menu.php';
                 </select><br>
                 <label>Предмет</label><br>
                 <select name="subject">
-                    <option value="Другие дисциплины">Вибирите направление</option>
+                    <option value="103">Вибирите направление</option>
                 </select><br>
-                <label for="type">Тип работы</label><br>
+                <label>Тип работы</label><br>
                 <select name="attribute">
                     <option value="lab">лабараторноя</option>
                     <option value="ref">реферат </option>
@@ -46,7 +46,7 @@ include ROOT.'/app/views/layouts/cabinet_menu.php';
                     <option value="other">другие материалы</option>
                 </select><br>
                 <label for="pages">Кол-во страниц:</label><br>
-                <input type="number" min="0" max="1000" step="1" name="page"/><br>
+                <input required="required" type="number" min="0" max="1000" step="1" name="page" value="0"/><br>
                 Дата написания<br>
                 <input id="calendar" name="date" value="" type="text"/><br>
                 <input type="radio" name="language" value="ru" checked> Русский<br>

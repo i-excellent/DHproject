@@ -19,12 +19,14 @@ class SetController
     public function actionCatalog($idCategory=null)
     {
 if (!isset($idCategory)){
+    $subject = Subject::getSubject();//выбирем все категории и предметы
         require_once(ROOT . '/app/views/Catalog.php');
         return true;}
         else
         {
-        require_once(ROOT . '/app/views/idcatalog.php');
 
+        require_once(ROOT . '/app/views/idcatalog.php');
+            return true;
         }
 
     }

@@ -11,8 +11,6 @@ include ROOT.'/app/views/layouts/left_menu.php';
 ?>
     <div id="block_content">
         <?php
-
-        $categories = array();
         $categories = Subject::getCategoryesWork($idCategory);
         foreach ($categories as $row_work)
             echo"

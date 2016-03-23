@@ -17,7 +17,7 @@ class Subject
         $row2 = $result->fetchAll(PDO::FETCH_ASSOC);
         if(isset($idSubject))
         {
-            $result = $DBH->query("SELECT id_subject ");
+            $result = $DBH->query("SELECT theme_file,desc_work,price_work,name FROM (work_user,user) WHERE subject_work=$idSubject AND user_id=id ");
             if($result->rowCount() > 0);{
             $row = $result->fetchAll(PDO::FETCH_ASSOC);
         }

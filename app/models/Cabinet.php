@@ -8,9 +8,9 @@
  */
 class  Cabinet
 {
-    public static function workUpload($name_file, $size_file, $theme_file,
-                                      $type_work, $subject_work, $count_page,
-                                      $date_work, $lang_work, $desc_work, $price_work, $userId)
+    public static function workUpload($name_file,  $size_file=0, $theme_file,
+                                      $type_work=null, $subject_work='103', $count_page='0',
+                                      $date_work=null, $lang_work=null, $desc_work=null, $price_work=null,$userId)
     {
         // Соединение с БД
         $DBH = dbConnect::getConnection();

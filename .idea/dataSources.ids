@@ -82,13 +82,13 @@
         <data-type>int(11)</data-type>
       </column>
       <column id="23" parent="4" name="theme_file">
-        <data-type>varchar(45)</data-type>
+        <data-type>varchar(255)</data-type>
       </column>
       <column id="24" parent="4" name="subject_work">
-        <data-type>varchar(45)</data-type>
+        <data-type>int(11)</data-type>
       </column>
       <column id="25" parent="4" name="type_work">
-        <data-type>varchar(45)</data-type>
+        <data-type>varchar(255)</data-type>
       </column>
       <column id="26" parent="4" name="date_work">
         <data-type>varchar(45)</data-type>
@@ -97,15 +97,16 @@
         <data-type>varchar(45)</data-type>
       </column>
       <column id="28" parent="4" name="desc_work">
-        <data-type>varchar(45)</data-type>
+        <data-type>text</data-type>
       </column>
       <column id="29" parent="4" name="price_work">
         <data-type>varchar(45)</data-type>
       </column>
-      <column id="30" parent="4" name="count_page">
+      <column id="30" parent="4" name="count_sell">
         <data-type>int(11)</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
       </column>
-      <column id="31" parent="4" name="count_sell">
+      <column id="31" parent="4" name="count_page">
         <data-type>int(11)</data-type>
         <default-expression>&apos;0&apos;</default-expression>
       </column>
