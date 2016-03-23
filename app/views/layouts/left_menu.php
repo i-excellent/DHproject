@@ -1,4 +1,11 @@
 <div id="block_left">
+    <p>Поиск</p>
+    <form name="some" method="POST" action="/search/index">
+    <input type="text" name="string">
+    <select name="logic">
+        <option value="OR">искать любое из слов
+        <option value="AND">искать все слова
+    </select>
     <label>Направление</label><br>
     <select  name="type">
         <?php
@@ -14,7 +21,7 @@
     </select><br>
     <label for="type">Тип работы</label><br>
     <select name="attribute">
-        <option value="100">любая работа</option>	<option value="100">любая работа</option>
+        <option value="100">любая работа</option>
         <option value="0">реферат </option>
         <option value="1">доклад или сообщение </option>
         <option value="2">курсовая работа</option>
@@ -40,7 +47,7 @@
         <option value="10">не более 10 лет</option>
     </select><br>
     <input type="submit" value="Применить фильтр">
-
+        </form>
 </div>
 
 

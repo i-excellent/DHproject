@@ -23,7 +23,6 @@ class Subject
         }
             return $row;
         }
-
         return $row2;
     }
     }

@@ -10,6 +10,7 @@ return array(
     'categories/([0-9]+)' => 'set/catalog/$1', // actionCategory в CatalogController
     'subject/([0-9]+)' => 'set/subject/$1', // views subject
     'set/ajax'=> 'set/ajax',
+    'search/index'=>'search/search',
 
     // user:
     'user/register' => 'user/register',
