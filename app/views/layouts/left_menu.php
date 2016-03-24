@@ -1,13 +1,14 @@
 <div id="block_left">
     <p>Поиск</p>
     <form name="some" method="POST" action="/search/index">
-    <input type="text" name="string">
+    <input type="text" name="string" maxlength="100">
     <select name="logic">
         <option value="OR">искать любое из слов
         <option value="AND">искать все слова
     </select>
     <label>Направление</label><br>
     <select  name="type">
+        <option value="0">Все категории</option>
         <?php
         $categories = array();
         $categories = Subject::getCategorySubject();
