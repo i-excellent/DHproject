@@ -6,20 +6,22 @@
  * Time: 0:43
  */
 class Search {
-public static function getSearchWork($strSearch)
-{
-// Соединение с БД
-    $DBH = dbConnect::getConnection();
-
-    // Текст запроса к БД
-    $sql = "SELECT * FROM  work_user WHERE (theme_file,desc_work) LIKE '%маба%'";
-
-    // Получение результатов. Используется подготовленный запрос
-    $result = $DBH->prepare($sql);
-    if ($result->rowCount() > 0) ;
-    {
-        $row1 = $result->fetchAll(PDO::FETCH_ASSOC);
-        return $row1;
+    function get_results($words){
+        $DBH = dbConnect::getConnection();
+        $sql = "SELECT * FROM (`work_user`) WHERE ";
+        $i = 0;
+        foreach($words as $key => $value){
+            $i++;
+            $sql = $sql." `theme_file` LIKE '%".$value."%' OR `desc_work` LIKE '%".$value."%'".($i==count($words)?"":" OR");
+        }
+        $sql .= " ORDER BY `date_work` DESC";
+        var_dump($sql);
+        $result = $DBH->query($sql);
+        if ($result->rowCount() > 0) ;
+        {
+            $result = $result->fetchAll(PDO::FETCH_ASSOC);
+            return $result;
+        }
     }
-}
+
 }
