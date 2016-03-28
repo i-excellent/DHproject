@@ -10,7 +10,7 @@ class  Cabinet
 {
     public static function workUpload($name_file,  $size_file=0, $theme_file,
                                       $type_work=null, $subject_work='103', $count_page='0',
-                                      $date_work=null, $lang_work=null, $desc_work=null, $price_work=null,$userId)
+                                      $date_work=null, $lang_work=null, $desc_work=null, $price_work=null,$atr_work='0',$userId)
     {
         // Соединение с БД
         $DBH = dbConnect::getConnection();
@@ -18,10 +18,10 @@ class  Cabinet
         // Текст запроса к БД
         $sql = 'INSERT INTO work_user (name_file,  size_file, theme_file,
                                   type_work, subject_work, count_page,
-                                  date_work, lang_work, desc_work, price_work,user_id) '
+                                  date_work, lang_work, desc_work, price_work,atr_work,user_id) '
             . 'VALUES (:name_file,  :size_file, :theme_file,
                                   :type_work, :subject_work, :count_page,
-                                  :date_work, :lang_work, :desc_work, :price_work,:userId)';
+                                  :date_work, :lang_work, :desc_work, :price_work,:atr_work,:userId)';
 
         // Получение и возврат результатов. Используется подготовленный запрос
         $result = $DBH->prepare($sql);
@@ -35,6 +35,7 @@ class  Cabinet
         $result->bindParam(':lang_work', $lang_work, PDO::PARAM_STR);
         $result->bindParam(':desc_work', $desc_work, PDO::PARAM_STR);
         $result->bindParam(':price_work', $price_work, PDO::PARAM_STR);
+        $result->bindParam(':atr_work', $atr_work, PDO::PARAM_STR);
         $result->bindParam(':userId', $userId, PDO::PARAM_STR);
         $count_work=Cabinet::CountWork('+1',$subject_work);//обновляем количество робот
         return $result->execute();

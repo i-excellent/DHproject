@@ -17,7 +17,6 @@ class SearchController
 
 public  function actionSearch()
 {    $strSearch=$_POST['string'];
-     $logic=$_POST['logic'];
      $type=$_POST['type'];
      $subject=$_POST['subject'];
      $attribute=$_POST['attribute'];
@@ -28,15 +27,15 @@ public  function actionSearch()
         $word = explode(" ", $this->getCleanString($_POST['string']));
         $words = $this->clean_array_to_search($word, $max, $min_length);
     $Search= new Search();
-        $results = $Search->get_results($words);
-        $result = $this->get_matches($results, $words);;
-    var_dump($result);
-    var_dump($_POST['string']);
-    var_dump($_POST['logic']);
-    var_dump($_POST['type']);
-    var_dump($_POST['subject']);
+        $results = $Search->get_results($words,$type,$subject,$attribute,$count,$age);
+    
+    $result = $this->get_matches($results, $words);;
+   var_dump($result);
+ var_dump($_POST['string']);
+var_dump($_POST['type']);
+  var_dump($_POST['subject']);
     var_dump($_POST['attribute']);
-    var_dump($_POST['count']);
+var_dump($_POST['count']);
 
 
 }
@@ -47,7 +46,7 @@ public  function actionSearch()
     $cleanString = preg_replace('~[^a-z0-9 \x80-\xFF]~i', "",$strSearch);
     return $cleanString;
 }
-    function clean_array_to_search($words = array(), $max = 0, $min_length){
+function clean_array_to_search($words = array(), $max = 0, $min_length){
         $result = array();
         $i = 0;
         foreach($words as $key => $value){
@@ -67,7 +66,8 @@ function get_matches($content, $word = array()){
             $res[$p->id_work] = $p;
             foreach($word as $w){
                 if(trim($w) != ""){
-                    $w = trim($w);
+                    $w = trim($w); // удаляем пробелы
+                    $matches[$p->id_work]=null;
                     $matches[$p->id_work] = $matches[$p->id_work] + count(explode($w, $p->theme_file));
                     $matches[$p->id_work] = $matches[$p->id_work] + count(explode($w, $p->desc_work));
                 }

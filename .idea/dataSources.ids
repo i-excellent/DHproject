@@ -111,31 +111,35 @@
         <data-type>int(11)</data-type>
         <default-expression>&apos;0&apos;</default-expression>
       </column>
-      <key id="33" parent="4" name="PRIMARY">
+      <column id="33" parent="4" name="atr_work">
+        <data-type>int(11)</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <key id="34" parent="4" name="PRIMARY">
         <columns>id_work</columns>
         <primary>1</primary>
       </key>
-      <column id="34" parent="5" name="word_id">
+      <column id="35" parent="5" name="word_id">
         <mandatory>1</mandatory>
         <data-type>int(11)</data-type>
       </column>
-      <column id="35" parent="5" name="word_words">
+      <column id="36" parent="5" name="word_words">
         <mandatory>1</mandatory>
         <data-type>text</data-type>
       </column>
-      <column id="36" parent="5" name="word_count">
+      <column id="37" parent="5" name="word_count">
         <mandatory>1</mandatory>
         <data-type>int(11)</data-type>
       </column>
-      <index id="37" parent="5" name="word_id">
+      <index id="38" parent="5" name="word_id">
         <columns>word_id</columns>
         <unique>1</unique>
       </index>
-      <key id="38" parent="5" name="PRIMARY">
+      <key id="39" parent="5" name="PRIMARY">
         <columns>word_id</columns>
         <primary>1</primary>
       </key>
-      <key id="39" parent="5" name="word_id">
+      <key id="40" parent="5" name="word_id">
         <columns>word_id</columns>
         <underlying-index>word_id</underlying-index>
       </key>

@@ -130,6 +130,7 @@ public function actionBill()
             $theme_file = $_POST['theme'];
             $type_work = $_POST['type'];
             $subject_work = $_POST['subject'];
+            $atr_work = $_POST['attribute'];
             $count_page = $_POST['page'];
             $date_work = $_POST['date'];
             $lang_work = $_POST['language'];
@@ -146,7 +147,7 @@ public function actionBill()
                 echo "<h3>Файл успешно загружен на сервер</h3>";
                 $result = Cabinet::workUpload($name_file,  $size_file, $theme_file,
                     $type_work, $subject_work, $count_page,
-                    $date_work, $lang_work, $desc_work, $price_work, $userId);
+                    $date_work, $lang_work, $desc_work, $price_work,$atr_work, $userId);
                 header("Location: /cabinet/sell");
             }
             else { echo "<h3>Ошибка! Не удалось загрузить файл на сервер!</h3>"; exit;

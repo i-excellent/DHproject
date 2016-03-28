@@ -2,10 +2,6 @@
     <p>Поиск</p>
     <form name="some" method="POST" action="/search/index">
     <input type="text" name="string" maxlength="100">
-    <select name="logic">
-        <option value="OR">искать любое из слов
-        <option value="AND">искать все слова
-    </select>
     <label>Направление</label><br>
     <select  name="type">
         <option value="0">Все категории</option>
@@ -22,13 +18,13 @@
     </select><br>
     <label for="type">Тип работы</label><br>
     <select name="attribute">
-        <option value="100">любая работа</option>
-        <option value="0">реферат </option>
-        <option value="1">доклад или сообщение </option>
-        <option value="2">курсовая работа</option>
-        <option value="3">дипломная работа</option>
-        <option value="4">магистерская работа</option>
-        <option value="5">другие материалы</option>
+        <option value="0">любая работа</option>
+        <option value="2">лабараторноя</option>
+        <option value="3">реферат </option>
+        <option value="4">доклад или сообщение </option>
+        <option value="5">курсовая работа</option>
+        <option value="6">дипломная работа</option>
+        <option value="1">другие материалы</option>
     </select><br>
     <label for="pages">Кол-во страниц:</label><br>
     <select name="count">

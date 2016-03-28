@@ -13,8 +13,6 @@ include ROOT.'/app/views/layouts/header.php';
 <?php
 include ROOT.'/app/views/layouts/cabinet_menu.php';
 ?>
-    <script src="/app/views/JavaScript/calendar.js"></script>
-    <link href="/app/views/CSS/cal.css" rel="stylesheet" type="text/css" />
     <div id="cabinet_content">
 
 
@@ -38,17 +36,17 @@ include ROOT.'/app/views/layouts/cabinet_menu.php';
                 </select><br>
                 <label>Тип работы</label><br>
                 <select name="attribute">
-                    <option value="lab">лабараторноя</option>
-                    <option value="ref">реферат </option>
-                    <option value="doc">доклад или сообщение </option>
-                    <option value="kurs">курсовая работа</option>
-                    <option value="dipl">дипломная работа</option>
-                    <option value="other">другие материалы</option>
+                    <option value="2">лабараторноя</option>
+                    <option value="3">реферат </option>
+                    <option value="4">доклад или сообщение </option>
+                    <option value="5">курсовая работа</option>
+                    <option value="6">дипломная работа</option>
+                    <option value="1">другие материалы</option>
                 </select><br>
                 <label for="pages">Кол-во страниц:</label><br>
                 <input required="required" type="number" min="0" max="1000" step="1" name="page" value="0"/><br>
-                Дата написания<br>
-                <input id="calendar" name="date" value="" type="text"/><br>
+                Год сдачи<br>
+                <input type="number" min="1960" max="2025" name="date" step="1" value="2016"/><br>
                 <input type="radio" name="language" value="ru" checked> Русский<br>
                 <input type="radio" name="language" value="ua"> Украинский<br>
                 <input type="radio" name="language" value="etc"> Другой <br>
