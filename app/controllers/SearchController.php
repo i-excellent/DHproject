@@ -62,7 +62,6 @@ class SearchController
 
     function get_matches($content, $word = array())
     {
-        var_dump($content);
         if (!empty($content)) {
             $matches = array();
             foreach ($content as $p) {
@@ -76,7 +75,9 @@ class SearchController
                     }
                 }
             }
-            arsort($matches);
+            var_dump($matches);
+            arsort($matches); //Сортирует массив в обратном порядке, сохраняя ключи
+            var_dump($matches);
             $i = 0;
             foreach ($matches as $k => $v) {
                 $result[$i] = $res[$k];
