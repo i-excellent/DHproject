@@ -13,7 +13,7 @@ include ROOT.'/app/views/layouts/left_menu.php';
         <?php
         $categories = Subject::getCategoryesWork($idCategory);
         foreach ($categories as $row_work)
-            echo"
+            echo "
             <ul>
             <li>$row_work[theme_file]</li>
             <li>$row_work[name]</li>

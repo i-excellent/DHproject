@@ -6,12 +6,12 @@
  * Time: 2:06
  */
 
-include ROOT.'/app/views/layouts/header.php';
+include ROOT . '/app/views/layouts/header.php';
 
 ?>
 
 <?php
-include ROOT.'/app/views/layouts/cabinet_menu.php';
+include ROOT . '/app/views/layouts/cabinet_menu.php';
 ?>
     <div id="cabinet_content">
 
@@ -22,12 +22,12 @@ include ROOT.'/app/views/layouts/cabinet_menu.php';
                 <input type="text" autofocus placeholder="Тема" required="required" name="theme"/><br>
                 <input type="file" name="uploadfile" required="required"><br>
                 <label>Направление</label><br>
-                <select  name="type">
+                <select name="type">
                     <?php
                     $categories = array();
                     $categories = Subject::getCategorySubject();
                     foreach ($categories as $row)
-                        echo" <option value=\"$row[type_id]\">$row[type]</option>"
+                        echo " <option value=\"$row[type_id]\">$row[type]</option>"
                     ?>
                 </select><br>
                 <label>Предмет</label><br>
@@ -37,8 +37,8 @@ include ROOT.'/app/views/layouts/cabinet_menu.php';
                 <label>Тип работы</label><br>
                 <select name="attribute">
                     <option value="2">лабараторноя</option>
-                    <option value="3">реферат </option>
-                    <option value="4">доклад или сообщение </option>
+                    <option value="3">реферат</option>
+                    <option value="4">доклад или сообщение</option>
                     <option value="5">курсовая работа</option>
                     <option value="6">дипломная работа</option>
                     <option value="1">другие материалы</option>

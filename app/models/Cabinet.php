@@ -8,9 +8,9 @@
  */
 class  Cabinet
 {
-    public static function workUpload($name_file,  $size_file=0, $theme_file,
-                                      $type_work=null, $subject_work='103', $count_page='0',
-                                      $date_work=null, $lang_work=null, $desc_work=null, $price_work=null,$atr_work='0',$userId)
+    public static function workUpload($name_file, $size_file = 0, $theme_file,
+                                      $type_work = null, $subject_work = '103', $count_page = '0',
+                                      $date_work = null, $lang_work = null, $desc_work = null, $price_work = null, $atr_work = '0', $userId)
     {
         // Соединение с БД
         $DBH = dbConnect::getConnection();
@@ -37,7 +37,7 @@ class  Cabinet
         $result->bindParam(':price_work', $price_work, PDO::PARAM_STR);
         $result->bindParam(':atr_work', $atr_work, PDO::PARAM_STR);
         $result->bindParam(':userId', $userId, PDO::PARAM_STR);
-        $count_work=Cabinet::CountWork('+1',$subject_work);//обновляем количество робот
+        $count_work = Cabinet::CountWork('+1', $subject_work);//обновляем количество робот
         return $result->execute();
     }
 
@@ -74,7 +74,7 @@ class  Cabinet
             // Получение и возврат результатов. Используется подготовленный запрос
             $result = $DBH->prepare("DELETE FROM work_user WHERE id_work=:id");
             $result->bindParam(':id', $id, PDO::PARAM_INT);
-            $count_work=Cabinet::CountWork('-1',$row[0]['subject_work']);//обновляем количество робот
+            $count_work = Cabinet::CountWork('-1', $row[0]['subject_work']);//обновляем количество робот
             return $result->execute();
         }
         return true;
@@ -110,10 +110,11 @@ class  Cabinet
             return $row1;
         }
     }
-    public static function CountWork($num,$subject_work)
+
+    public static function CountWork($num, $subject_work)
     {
         $DBH = dbConnect::getConnection();
-        $Count='count_work '.$num.'';
+        $Count = 'count_work ' . $num . '';
         $workCount = $DBH->prepare("UPDATE subject
             SET count_work = $Count WHERE id_subject = '$subject_work'");
         $workCount->bindParam(':count_work', $Count, PDO::PARAM_INT);

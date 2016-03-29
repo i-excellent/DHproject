@@ -1,11 +1,11 @@
 <?php
-include ROOT.'/app/views/layouts/header.php';
+include ROOT . '/app/views/layouts/header.php';
 
 ?>
 
-        <?php
-        include ROOT.'/app/views/layouts/cabinet_menu.php';
-        ?>
+<?php
+include ROOT . '/app/views/layouts/cabinet_menu.php';
+?>
 
-<div id="cabinet_content"></div>
+    <div id="cabinet_content"></div>
 <?php include ROOT . '/app/views/layouts/footer.php'; ?>

@@ -45,24 +45,23 @@ class UserController
             if (User::checkEmailExists($email)) {
                 $errors[] = 'Такой email уже используется';
             }
-            if($_SERVER['REQUEST_METHOD'] == 'POST')
-            {
-                if(empty($_POST['g-recaptcha-response'])){
+            if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+                if (empty($_POST['g-recaptcha-response'])) {
                     $errors[] = 'Пройдите проверку на робота';
                 }
-                $recaptcha =  $_POST['g-recaptcha-response'];
-                $url= 'https://www.google.com/recaptcha/api/siteverify';
+                $recaptcha = $_POST['g-recaptcha-response'];
+                $url = 'https://www.google.com/recaptcha/api/siteverify';
                 $secret = '6LdzQxoTAAAAAKXlmVtV2OrLPz5U_zQ_uEudl12n';
                 $ip = $_SERVER['REMOTE_ADDR'];
-                $url_data = $url.'?secret='.$secret.'&response='.$recaptcha.'&remoteip='.$ip;
+                $url_data = $url . '?secret=' . $secret . '&response=' . $recaptcha . '&remoteip=' . $ip;
                 $curl = curl_init();
-                curl_setopt($curl,CURLOPT_URL,$url_data);
-                curl_setopt($curl,CURLOPT_SSL_VERIFYPEER,false);//отмена проверки сертификата
-                curl_setopt($curl,CURLOPT_RETURNTRANSFER,1);//ответ гугла
+                curl_setopt($curl, CURLOPT_URL, $url_data);
+                curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);//отмена проверки сертификата
+                curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);//ответ гугла
                 $res = curl_exec($curl);
                 curl_close($curl);//закрыть соидинение
-                $res=json_decode($res);
-                if(!$res->success){
+                $res = json_decode($res);
+                if (!$res->success) {
                     $errors[] = 'Ты не прошол проверку';
                 }
             }
@@ -114,7 +113,7 @@ class UserController
                 $errors[] = 'Неправильные данные для входа на сайт';
             } else {
                 // Если данные правильные, запоминаем пользователя (сессия)
-                User::auth($userId['id'],$userId['name']);
+                User::auth($userId['id'], $userId['name']);
 
                 // Перенаправляем пользователя в закрытую часть - кабинет
                 header("Location: /cabinet/index");

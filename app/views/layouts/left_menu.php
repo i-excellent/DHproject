@@ -1,6 +1,6 @@
 <div id="block_left">
     <p>Поиск</p>
-    <form name="some" method="POST" action="/search/index">
+    <form name="some" method="POST" action="/search/index" enctype="application/x-www-form-urlencoded">
     <input type="text" name="string" maxlength="100">
     <label>Направление</label><br>
     <select  name="type">
